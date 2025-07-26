@@ -1,74 +1,57 @@
-import { motion, useScroll } from 'motion/react';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { useState } from 'react';
 import './App.css';
-import { Cursor } from './pages/Cursor';
-import { Header } from './components/Header';
+import  Header  from './components/Header';
+import { Cursor } from './components/Cursor';
 import Home from './components/Home';
 import About from './components/About';
-export default function Rotate() {
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+
+export default function App() {
   const { scrollYProgress } = useScroll();
+  const [activeSection, setActiveSection] = useState('home');
+
+  // Track which section is currently in view
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const sections = ['home', 'about', 'projects', 'contact'];
+    const scrollPosition = window.scrollY + 100;
+
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element) {
+        const { offsetTop, offsetHeight } = element;
+        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          setActiveSection(section);
+          break;
+        }
+      }
+    }
+  });
 
   return (
     <>
-    <div className=' bg-black min-h-screen'>
-       <Header/>
-       <Home/>
-       <About/>
-       
-    </div>
-   
-    {/* <motion.div
-    style={{
-      scaleX:scrollYProgress
-    }}
-    className='bg-red-500 w-full h-3 fixed top-10 '
-    >
-      
-    </motion.div>
+      <div className='bg-black min-h-screen'>
+        {/* Pass activeSection to Header */}
+        <Header activeSection={activeSection} />
+        
+        <main className="pt-16 md:pt-20">
+          <Cursor/>
+          <Home id="home" />
+          <About id="about" />
+          <Projects id="projects" />
+          <Contact id="contact" />
+        </main>
+        
+        <Footer />
+      </div>
 
-    <motion.div
-      animate={{ rotate: 360 ,scale:2,transition:{duration:8}}}
-  
-      className="box"
-    />
-
-    <motion.div 
-    className='box'
-    whileHover={{scale:1.2}}
-    whileTap={{scale:0.2}}
-    />
-    <motion.h1 
-    animate={{x:100, y:100 ,rotate:360}}
-    transition={{duration:5 ,delay:5}}
-    >Hi this is Anjali</motion.h1>
-    <Cursor/>
-
-    <motion.div
-  initial={{ backgroundColor: "rgb(0, 255, 0)", opacity: 0 ,duration:100}}
-  whileInView={{ backgroundColor: "rgb(255, 0, 0)", opacity: 1 }}
-  transition={{duration:5}}
-  
-  className='box'
-/>
-    <motion.div
-    className='box'
-    initial={{
-      x:100,
-      y:100
-    }}
-    animate={{
-      x:1000,
-      y:1000,
-      rotateX:360
-    }}
-    transition={{
-      duration:5,
-      delay:1
-    }}
-    >
-
-    </motion.div> */}
+      {/* Progress bar */}
+      <motion.div
+        style={{ scaleX: scrollYProgress }}
+        className='fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 z-50'
+      />
     </>
-
-  
   );
 }
