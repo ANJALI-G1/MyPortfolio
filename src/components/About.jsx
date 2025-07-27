@@ -3,18 +3,16 @@ import { TechIcons } from "./TechIcons";
 
 const About = ({ id }) => {
   const stats = [
-    { value: "600+", label: "Doubts Resolved in DSA", color: "cyan" },
-    { value: "200+", label: "Students Impacted", color: "indigo" },
-    { value: "3+", label: "Years of Coding", color: "purple" }
+    { value: "400+", label: "Doubts Resolved in DSA", color: "cyan" },
+    { value: "15+", label: "Team Members Led", color: "indigo" },
+    { value: "2+", label: "Years of Coding", color: "purple" }
   ];
 
   return (
     <section id={id} className="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-20 text-white relative z-10 overflow-hidden">
-      {/* Background elements - adjusted for mobile */}
       <div className="hidden sm:block absolute -right-20 -top-20 w-64 h-64 bg-blue-900/10 rounded-full filter blur-3xl -z-10"></div>
       <div className="hidden sm:block absolute -left-20 bottom-0 w-64 h-64 md:w-96 md:h-96 bg-purple-900/10 rounded-full filter blur-3xl -z-10"></div>
 
-      {/* About Me Title */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -24,14 +22,11 @@ const About = ({ id }) => {
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent text-center">
           About Me
         </h2>
-        <div className="w-16 md:w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full "></div>
+        <div className="w-16 md:w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"></div>
       </motion.div>
 
-      {/* Content Grid - adjusted for mobile */}
       <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
-        {/* Left Column - Text Content */}
         <div>
-          {/* Introduction */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -51,7 +46,6 @@ const About = ({ id }) => {
             </p>
           </motion.div>
 
-          {/* Experience */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -59,24 +53,32 @@ const About = ({ id }) => {
             className="space-y-4 md:space-y-6"
           >
             <div className="p-4 md:p-6 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-800">
-              <h3 className="text-lg md:text-xl font-semibold text-teal-400 mb-2">Teaching Assistant @ APNA College</h3>
+              <h3 className="text-lg md:text-xl font-semibold text-teal-400 mb-2">
+                Teaching Assistant @ APNA College
+                <a href="https://drive.google.com/file/d/1NYKS_2TifaFAL3wgpx37EX8fKDMecjh4/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="ml-2 text-sm text-blue-400 hover:underline">
+                  (View Certificate)
+                </a>
+              </h3>
               <p className="text-gray-300 text-sm md:text-base">
                 Mentored 600+ students in Data Structures & Algorithms, helping them solve complex problems and improve their coding skills.
               </p>
             </div>
 
             <div className="p-4 md:p-6 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-800">
-              <h3 className="text-lg md:text-xl font-semibold text-fuchsia-400 mb-2">General Secretary @ Curieux Computer Society</h3>
+              <h3 className="text-lg md:text-xl font-semibold text-fuchsia-400 mb-2">
+                General Secretary @ Curieux Computer Society
+                <a href="https://drive.google.com/file/d/1y77AEHQp1nce-HhW9rnLHVqEumzPxVxi/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="ml-2 text-sm text-blue-400 hover:underline">
+                  (View Certificate)
+                </a>
+              </h3>
               <p className="text-gray-300 text-sm md:text-base">
-                Organized technical workshops and events for 200+ students, fostering a community of learning and innovation.
+                Organized technical workshops and events while leading a team of 15+ members, fostering a community of learning and innovation.
               </p>
             </div>
           </motion.div>
         </div>
 
-        {/* Right Column - Stats & Skills */}
         <div>
-          {/* Stats - now stacked on mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +97,6 @@ const About = ({ id }) => {
             ))}
           </motion.div>
 
-          {/* Skills Section */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
