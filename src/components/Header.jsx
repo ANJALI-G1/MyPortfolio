@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <motion.header 
-      className="fixed top-0 w-full bg-transparent z-50 flex justify-between items-center px-10 py-4 border-b border-[#ffffff10] backdrop-blur-sm text-xl"
+      className="fixed top-0 w-full bg-transparent z-50 flex justify-between items-center px-10 py-4 border-b border-[#ffffff10] backdrop-blur-sm "
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
