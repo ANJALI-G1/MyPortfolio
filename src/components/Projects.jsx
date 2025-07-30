@@ -92,12 +92,12 @@ const Projects = ({ id }) => {
     setCurrentIndex((prev) => (prev - 1 + (totalItems - (itemsPerPage - 1))) % (totalItems - (itemsPerPage - 1)));
   };
 
-  useEffect(() => {
-    if (!isHovered) {
-      intervalRef.current = setInterval(next, 3000);
-    }
-    return () => clearInterval(intervalRef.current);
-  }, [isHovered, currentIndex, isMobile]);
+  // useEffect(() => {
+  //   if (!isHovered) {
+  //     intervalRef.current = setInterval(next, 3000);
+  //   }
+  //   return () => clearInterval(intervalRef.current);
+  // }, [isHovered, currentIndex, isMobile]);
 
   const visibleProjects = [];
   const endIndex = isMobile ? currentIndex + 1 : currentIndex + itemsPerPage;

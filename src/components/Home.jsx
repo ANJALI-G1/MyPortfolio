@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Home = ({ id }) => {
     const roles = [' Student', ' Learner', ' FullStack Developer'];
@@ -59,13 +59,13 @@ const Home = ({ id }) => {
     //     }
     // }, [currentTextIndex, currentRoleIndex, isTyping, showContent]);
 
-     useEffect(() => {
+    useEffect(() => {
         if (!showContent) return;
 
         if (isTyping) {
             if (currentTextIndex < roles[currentRoleIndex].length) {
                 const timeout = setTimeout(() => {
-                    setCurrentRole(prev => 
+                    setCurrentRole(prev =>
                         roles[currentRoleIndex].substring(0, currentTextIndex + 1)
                     );
                     setCurrentTextIndex(prev => prev + 1);
@@ -80,7 +80,7 @@ const Home = ({ id }) => {
         } else {
             if (currentTextIndex > 0) {
                 const timeout = setTimeout(() => {
-                    setCurrentRole(prev => 
+                    setCurrentRole(prev =>
                         prev.substring(0, prev.length - 1)
                     );
                     setCurrentTextIndex(prev => prev - 1);
@@ -102,8 +102,13 @@ const Home = ({ id }) => {
         return () => clearInterval(interval);
     }, [showContent]);
 
+    
+
     return (
-        <div id={ id } className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden bg-black">
+        <div id={id} className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden bg-black" >
+    
+
+
             {/* Static Starry Background */}
             <div className="absolute inset-0 overflow-hidden">
                 {stars.map((star) => (
@@ -151,30 +156,30 @@ const Home = ({ id }) => {
                     </motion.h1>
 
                     <motion.div
-  className="text-2xl md:text-4xl font-medium text-gray-300 h-12 flex items-center justify-center"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 0.5, delay: 0.4 }}
->
-  I am a{' '}
-  <AnimatePresence mode="wait">
-    <motion.span
-      key={currentRoleIndex}
-      className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent min-w-[10px] ml-2"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-    >
-      {currentRole}
-      <motion.span
-        className="ml-1 w-1 h-6 bg-purple-500 inline-block"
-        animate={{ opacity: showCursor ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-      />
-    </motion.span>
-  </AnimatePresence>
-</motion.div>
+                        className="text-2xl md:text-4xl font-medium text-gray-300 h-12 flex items-center justify-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                    >
+                        I am a{' '}
+                        <AnimatePresence mode="wait">
+                            <motion.span
+                                key={currentRoleIndex}
+                                className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent min-w-[10px] ml-2"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                {currentRole}
+                                <motion.span
+                                    className="ml-1 w-1 h-6 bg-purple-500 inline-block"
+                                    animate={{ opacity: showCursor ? 1 : 0 }}
+                                    transition={{ duration: 0.3 }}
+                                />
+                            </motion.span>
+                        </AnimatePresence>
+                    </motion.div>
 
                     {/* Button Section */}
                     <motion.div className="flex gap-6 justify-center items-center mt-8">
@@ -206,7 +211,7 @@ const Home = ({ id }) => {
                     </motion.div>
 
                     <motion.a
-                        href="https://drive.google.com/file/d/1H93DBjEYkCu8Fv7iT29slVY640ifi5oU/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1NN-mDJNDgfJVHzEibuNWbp06zL5D8FwA/view?usp=sharing"
                         download
                         whileHover={{
                             scale: 1.1,
